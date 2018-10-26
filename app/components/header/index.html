@@ -1,0 +1,14 @@
+<nav class="mr-auto navbar navbar-expand-lg navbar-light bg-light" ng-controller="HeaderCtrl">
+  <a class="navbar-brand" ui-sref="base">WKL-ILAB</a>
+
+  <ul class="navbar-nav language">
+    <li class="nav-item active">
+      <a href="#" ng-click="changeLanguage('en')">{{ 'EN' | translate }}</a>
+    </li>
+    <li class="nav-item">
+      <a href="#" ng-click="changeLanguage('ru')">{{ 'RU' | translate }}</a>
+    </li>
+  </ul>
+
+  <a href="#" ng-if="$root.authorized" ng-click="logout()" class="logout">{{ 'LOGOUT' | translate }}</a>
+</nav>

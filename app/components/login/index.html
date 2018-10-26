@@ -1,0 +1,37 @@
+<div class="row" ng-controller="LoginCtrl">
+  <div class="col-md-12">
+    <h1>{{ 'LOGIN' | translate }}</h1>
+    <form name="loginForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST" ng-submit="login()">
+      <div class="form-group">
+        <label for="email">{{ 'EMAIL' | translate }}: ({{ 'VALIDE_EMAIL' | translate }}: user1@wkl-ilab.com, {{ 'VALIDE_PASSWORD' | translate }}: qwerty)</label>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="{{ 'ENTER_EMAIL' | translate }}"
+          ng-model="email"
+          ng-class="['form-control', !(loginForm.email.$touched && loginForm.email.$invalid) || 'is-invalid']"
+          email
+        />
+        <p ng-show="loginForm.email.$touched && loginForm.email.$invalid" class="error">{{ 'INCORRECT_EMAIL' | translate }}</p>
+      </div>
+      <div class="form-group">
+        <label for="password">{{ 'PASSWORD' | translate }}</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="{{ 'ENTER_PASSWORD' | translate }}"
+          ng-model="password"
+          ng-class="['form-control', !(loginForm.password.$touched && loginForm.password.$invalid) || 'is-invalid']"
+          password
+        />
+        <p ng-show="loginForm.password.$touched && loginForm.password.$invalid" class="error">{{ 'INCORRECT_PASSWORD' | translate }}</p>
+      </div>
+      <div class="form-group">
+        <a href="#" ui-sref="forgot-password">{{ 'FORGOT_PASSWORD' | translate }}</a>
+      </div>
+      <button type="submit" class="btn btn-primary" ng-disabled="!loginForm.$valid">{{ 'SIGN_IN' | translate }}</button>
+    </form>
+  </div>
+</div>

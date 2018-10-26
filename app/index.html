@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <base href="/">
+  <meta charset="utf-8" />
+  <title>WKL-ILAB</title>
+  <link rel="stylesheet" href="./libs/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <script src="./libs/angular/angular.min.js"></script>
+  <script src="./libs/angular-translate/dist/angular-translate.min.js"></script>
+  <script src="./libs/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+  <script src="./libs/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+  <script src="./libs/@uirouter/angularjs/release/stateEvents.min.js"></script>
+  <script src="./app/index.js"></script>
+  <script src="./app/directives/validators/username.js"></script>
+  <script src="./app/directives/validators/unique.js"></script>
+  <script src="./app/directives/validators/age.js"></script>
+  <script src="./app/directives/validators/birthday.js"></script>
+  <script src="./app/directives/validators/login.js"></script>
+  <script src="./app/directives/validators/notification.js"></script>
+  <script src="./app/directives/validators/email.js"></script>
+  <script src="./app/directives/validators/password.js"></script>
+  <script src="./app/services/spinner.js"></script>
+  <script src="./app/services/auth.js"></script>
+  <script src="./app/services/profile.js"></script>
+  <script src="./app/components/header/index.js"></script>
+  <script src="./app/components/spinner/index.js"></script>
+  <script src="./app/components/checking-spinner/index.js"></script>
+  <script src="./app/components/login/index.js"></script>
+  <script src="./app/components/forgot-password/index.js"></script>
+  <script src="./app/components/account/index.js"></script>
+  <script src="./app/components/profile/index.js"></script>
+  <script src="./app/components/settings/index.js"></script>
+</head>
+<body ng-app="app">
+  <header-component></header-component>
+  <div class="container-fluid">
+    <ui-view></ui-view>
+  </div>
+  <spinner-component></spinner-component>
+</body>
+</html>

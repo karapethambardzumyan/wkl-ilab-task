@@ -1,0 +1,32 @@
+<div class="row profile" ng-controller="AccountCtrl">
+  <div class="col-md-12">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a
+          href="#"
+          ng-class="index === 0 ? 'nav-link active' : 'nav-link'"
+          ng-click="change(0)"
+        >
+          {{ 'PROFILE' | translate }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          href="#"
+          ng-class="index === 1 ? 'nav-link active' : 'nav-link'"
+          ng-click="change(1)"
+        >
+          {{ 'SETTINGS' | translate }}
+        </a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active profile-tab" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <profile-component ng-if="index === 0"></profile-component>
+      </div>
+      <div class="tab-pane fade show active profile-tab" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+        <settings-component ng-if="index === 1"></settings-component>
+      </div>
+    </div>
+  </div>
+</div>

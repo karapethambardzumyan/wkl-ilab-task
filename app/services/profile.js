@@ -1,0 +1,23 @@
+(function() {
+  'use strict';
+
+  angular
+    .module('app')
+    .factory('ProfileService', ['$q', '$http', '$translate', function($q, $http, $translate) {
+      return {
+        get: function() {
+          return $http.get('./api/profile', { headers: { token: sessionStorage.getItem('token') } });
+        },
+        put: function(profile, cb) {
+          $http.put('./api/profile', profile, { headers: { token: sessionStorage.getItem('token'), 'Content-Type': 'application/x-www-form-urlencoded' } })
+            .then(function(result) {
+              sessionStorage.setItem('token', result.data.token);
+              return cb();
+            })
+            .catch(function(err) {
+              alert($translate.instant('INCORRECT_TOKEN'));
+            });
+        }
+      };
+    }]);
+})();
