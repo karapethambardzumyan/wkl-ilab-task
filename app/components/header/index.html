@@ -10,6 +10,6 @@
     </li>
   </ul>
 
-  <a href="#" ui-sref="users-list" ng-if="$root.authorized" class="users_list_link">{{ 'USERS_LIST' | translate }}</a>
+  <a href="#" ui-sref="users" ng-if="$root.authorized" class="users_list_link">{{ 'USERS' | translate }}</a>
   <a href="#" ng-if="$root.authorized" ng-click="logout()" class="logout">{{ 'LOGOUT' | translate }}</a>
 </nav>

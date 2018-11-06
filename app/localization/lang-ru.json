@@ -37,5 +37,5 @@
   "INCORRECT_NOTIFICATION": "Дата уведомления должна быть в таком формате: 07-Sep-18",
   "INCORRECT_EMAIL_OR_PASSWORD": "Неправильный логин или пароль",
   "INCORRECT_TOKEN": "Неправильный токен",
-  "USERS_LIST": "Список пользователей"
+  "USERS": "Пользователи"
 }

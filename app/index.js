@@ -40,10 +40,10 @@
         resolve: { authorized: AuthService => AuthService.authorized() }
       };
 
-      let usersListState = {
-        name: 'users-list',
-        url: '/users-list',
-        component: 'usersListComponent',
+      let usersState = {
+        name: 'users',
+        url: '/users',
+        component: 'usersComponent',
         resolve: { authorized: AuthService => AuthService.authorized() }
       };
 
@@ -54,7 +54,7 @@
         .state(baseState)
         .state(loginState)
         .state(forgotPasswordState)
-        .state(usersListState);
+        .state(usersState);
     })
     .run(['$rootScope', '$state', 'AuthService', 'SpinnerService', function($rootScope, $state, AuthService, SpinnerService) {
       $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
