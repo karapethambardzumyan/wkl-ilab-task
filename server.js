@@ -103,7 +103,7 @@ app.get('/api/profile', (req, res) => {
 
       return res.send(profile);
     });
-  }, 3000);
+  }, 300);
 });
 
 app.put('/api/profile', (req, res) => {

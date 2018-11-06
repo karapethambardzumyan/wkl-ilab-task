@@ -36,5 +36,6 @@
   "INCORRECT_LOGIN": "Login date should be in such format: 08 September 2018",
   "INCORRECT_NOTIFICATION": "Notification date should be in such format: 07-Sep-18",
   "INCORRECT_EMAIL_OR_PASSWORD": "Incorrect email or password",
-  "INCORRECT_TOKEN": "Incorrect token"
+  "INCORRECT_TOKEN": "Incorrect token",
+  "USERS_LIST": "Users list"
 }
