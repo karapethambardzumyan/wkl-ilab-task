@@ -4,6 +4,8 @@
   angular
     .module('app')
     .controller('UserListCtrl', ['$rootScope', '$scope', '$translate', 'SpinnerService', 'UsersService', function($rootScope, $scope, $translate, SpinnerService, UsersService) {
+      $scope.profile = UsersService.profile;
+
       $scope.onMouseOver = function($index) {
         $scope.index = $index;
       };
