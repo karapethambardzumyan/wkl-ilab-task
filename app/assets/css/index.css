@@ -66,3 +66,11 @@
   border-left: 1px solid #000;
   padding-left: 12px;
 }
+
+.user-list {
+  margin-bottom: 15px;
+}
+
+.search {
+  margin-bottom: 15px;
+}

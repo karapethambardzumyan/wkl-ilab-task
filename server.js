@@ -8,12 +8,35 @@ const port = 3000;
 const users = {
   1: {
     id: 1,
+    role: 1,
     name: "Karapet Hambardzumyan",
     age: "21",
     birthday: "1997/07/18",
     login: "08 September 2018",
     notification: "07-Sep-18",
     email: "user1@wkl-ilab.com",
+    password: "qwerty"
+  },
+  2: {
+    id: 2,
+    role: 0,
+    name: "Karapet Hambardzumyan",
+    age: "21",
+    birthday: "1997/07/18",
+    login: "08 September 2018",
+    notification: "07-Sep-18",
+    email: "user2@wkl-ilab.com",
+    password: "qwerty"
+  },
+  3: {
+    id: 3,
+    role: 0,
+    name: "Karapet Hambardzumyan",
+    age: "21",
+    birthday: "1997/07/18",
+    login: "08 September 2018",
+    notification: "07-Sep-18",
+    email: "user3@wkl-ilab.com",
     password: "qwerty"
   }
 };
@@ -119,6 +142,16 @@ app.put('/api/profile', (req, res) => {
     }
 
     return res.send({ token: encrypt(JSON.stringify(users[profile.id])) });
+  });
+});
+
+app.get('/api/user-list', (req, res) => {
+  validateToken(req.headers.token, (err, profile) => {
+    if(err) {
+      return res.status(err.status).send(false);
+    }
+
+    return res.send(users);
   });
 });
 

@@ -1,1 +1,16 @@
-user-list
+<div class="row user-list" ng-controller="UserListCtrl">
+  <div class="col-md-12">
+    <ul class="list-group"">
+      <li class="list-group-item" ng-repeat="(key, val) in userList">
+        <p>{{ 'ID' | translate }}: <strong>{{ val.id }}</strong></p>
+        <p>{{ 'Role' | translate }}: <strong>{{ val.role }}</strong></p>
+        <p>{{ 'EMAIL' | translate }}: <strong>{{ val.email }}</strong></p>
+        <p>{{ 'USERNAME' | translate }}: <strong>{{ val.name }}</strong></p>
+        <p>{{ 'AGE' | translate }}: <strong>{{ val.age }}</strong></p>
+        <p>{{ 'BIRTHDAY' | translate }}: <strong>{{ val.birthday }}</strong></p>
+        <p>{{ 'LOGIN' | translate }}: <strong>{{ val.login }}</strong></p>
+        <p>{{ 'NOTIFICATION' | translate }}: <strong>{{ val.notification }}</strong></p>
+      </li>
+    </ul>
+  </div>
+</div>
