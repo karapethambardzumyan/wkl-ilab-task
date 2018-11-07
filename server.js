@@ -155,6 +155,18 @@ app.get('/api/user-list', (req, res) => {
   });
 });
 
+app.get('/api/user-list/:id', (req, res) => {
+  setTimeout(() => {
+    validateToken(req.headers.token, (err, profile) => {
+      if(err) {
+        return res.status(err.status).send(false);
+      }
+
+      return res.send(users[req.params.id]);
+    });
+  }, 1000);
+});
+
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'app/index.html')));
 
 app.listen(port, () => console.log(`Server has jsut started at ${ port } port!`));

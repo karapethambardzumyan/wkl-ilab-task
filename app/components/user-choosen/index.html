@@ -1,5 +1,6 @@
-<div class="card">
+<div class="card" ng-controller="UserChoosenCtrl">
   <div class="card-body">
+    <h1>{{ user.id }}</h1>
     <p>{{ 'ID' | translate }}: <strong>{{ profile.id }}</strong></p>
     <p>{{ 'Role' | translate }}: <strong>{{ profile.role }}</strong></p>
     <p>{{ 'EMAIL' | translate }}: <strong>{{ profile.email }}</strong></p>

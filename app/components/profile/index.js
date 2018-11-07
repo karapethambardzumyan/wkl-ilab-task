@@ -7,7 +7,6 @@
       SpinnerService.start();
       ProfileService.get().then(result => {
         $scope.profile = result.data;
-
         SpinnerService.end();
       });
     }])

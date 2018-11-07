@@ -13,13 +13,16 @@
       };
 
       $scope.onClick = function(id) {
-        console.log(id);
+        SpinnerService.start();
+        UsersService.getUser(id).then(result => {
+          UsersService.choosen(result.data);
+          SpinnerService.end();
+        });
       };
 
       SpinnerService.start();
-      UsersService.get().then(result => {
+      UsersService.getUserList().then(result => {
         $scope.userList = result.data;
-
         SpinnerService.end();
       });
     }])
