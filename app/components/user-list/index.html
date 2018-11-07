@@ -1,7 +1,7 @@
 <div class="row user-list" ng-controller="UserListCtrl">
   <div class="col-md-12">
     <ul class="list-group"">
-      <li class="list-group-item" ng-repeat="(key, val) in userList">
+      <li ng-class="['list-group-item', $index !== index || 'hover']" ng-repeat="(key, val) in userList" ng-mouseover="onMouseOver($index)" ng-mouseout="onMouseOut($index)" ng-click="onClick(val.id)">
         <p>{{ 'ID' | translate }}: <strong>{{ val.id }}</strong></p>
         <p>{{ 'Role' | translate }}: <strong>{{ val.role }}</strong></p>
         <p>{{ 'EMAIL' | translate }}: <strong>{{ val.email }}</strong></p>

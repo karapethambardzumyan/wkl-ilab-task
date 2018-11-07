@@ -6,7 +6,7 @@
     .factory('UsersService', ['$q', '$http', '$translate', function($q, $http, $translate) {
       return {
         get: function() {
-          return $http.get('./api/user-list', { headers: { token: sessionStorage.getItem('token') } });
+          return $http.get('./api/user-list', { headers: { token: localStorage.getItem('token') } });
         }
       };
     }]);
