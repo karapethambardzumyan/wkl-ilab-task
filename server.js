@@ -14,7 +14,7 @@ const users = {
     birthday: "1997/07/18",
     login: "08 September 2018",
     notification: "07-Sep-18",
-    email: "user1@wkl-ilab.com",
+    email: "admin@wkl-ilab.com",
     password: "qwerty"
   },
   2: {
@@ -25,7 +25,7 @@ const users = {
     birthday: "1997/07/18",
     login: "08 September 2018",
     notification: "07-Sep-18",
-    email: "user2@wkl-ilab.com",
+    email: "user1@wkl-ilab.com",
     password: "qwerty"
   },
   3: {
@@ -36,7 +36,7 @@ const users = {
     birthday: "1997/07/18",
     login: "08 September 2018",
     notification: "07-Sep-18",
-    email: "user3@wkl-ilab.com",
+    email: "user2@wkl-ilab.com",
     password: "qwerty"
   }
 };
@@ -170,7 +170,15 @@ app.get('/api/user-list', (req, res) => {
       return res.status(err.status).send(false);
     }
 
-    return res.send(users);
+    const newUsers = {};
+
+    for(let i in users) {
+      if(users[i].id !== profile.id) {
+        newUsers[i] = users[i];
+      }
+    }
+
+    return res.send(newUsers);
   });
 });
 
