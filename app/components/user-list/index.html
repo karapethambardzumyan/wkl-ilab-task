@@ -10,6 +10,10 @@
         <p>{{ 'BIRTHDAY' | translate }}: <strong>{{ val.birthday }}</strong></p>
         <p>{{ 'LOGIN' | translate }}: <strong>{{ val.login }}</strong></p>
         <p>{{ 'NOTIFICATION' | translate }}: <strong>{{ val.notification }}</strong></p>
+        <div class="btn-group user-actions" role="group">
+          <button type="button" class="btn btn-outline-warning">Edit</button>
+          <button type="button" class="btn btn-outline-danger" ng-click="delete($event, val.id)">Delete</button>
+        </div>
       </li>
     </ul>
   </div>

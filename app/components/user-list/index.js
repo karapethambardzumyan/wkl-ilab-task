@@ -3,8 +3,24 @@
 
   angular
     .module('app')
-    .controller('UserListCtrl', ['$rootScope', '$scope', '$translate', 'SpinnerService', 'UserService', function($rootScope, $scope, $translate, SpinnerService, UserService) {
+    .controller('UserListCtrl', ['$rootScope', '$scope', '$translate', 'SpinnerService', 'UserService', 'ProfileService', function($rootScope, $scope, $translate, SpinnerService, UserService, ProfileService) {
       $scope.profile = UserService.profile;
+
+      $scope.delete = function($event, id) {
+        $event.stopPropagation();
+
+        const confirmation = confirm('Do you want to delete this user\'s account?');
+
+        if(confirmation) {
+          ProfileService.delete(id).then(function() {
+            SpinnerService.start();
+            UserService.getUserList().then(result => {
+              $scope.userList = result.data;
+              SpinnerService.end();
+            });
+          });
+        }
+      };
 
       $scope.onMouseOver = function($index) {
         $scope.index = $index;

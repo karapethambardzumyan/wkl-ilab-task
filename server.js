@@ -148,6 +148,22 @@ app.put('/api/profile', (req, res) => {
   });
 });
 
+app.delete('/api/profile/:id', (req, res) => {
+  validateToken(req.headers.token, (err, profile) => {
+    if(err) {
+      return res.status(err.status).send(false);
+    }
+
+    if(profile.role !== 1 || profile.id === Number(req.params.id)) {
+      return res.status(403).send(false);
+    }
+
+    delete users[req.params.id];
+
+    return res.send(true);
+  });
+});
+
 app.get('/api/user-list', (req, res) => {
   validateToken(req.headers.token, (err, profile) => {
     if(err) {

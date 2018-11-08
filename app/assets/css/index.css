@@ -70,3 +70,11 @@
   background: #4a91fb1c;
   cursor: pointer;
 }
+
+.user-actions {
+  width: 100%;
+}
+
+.user-actions button {
+  width: 50%;
+}
