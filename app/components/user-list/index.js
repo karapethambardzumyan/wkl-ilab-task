@@ -6,6 +6,10 @@
     .controller('UserListCtrl', ['$rootScope', '$scope', '$translate', 'SpinnerService', 'UserService', 'ProfileService', function($rootScope, $scope, $translate, SpinnerService, UserService, ProfileService) {
       $scope.profile = UserService.profile;
 
+      $scope.isObjectEmpty = function(object) {
+        return Object.keys(object).length === 0;
+      };
+
       $scope.delete = function($event, id) {
         $event.stopPropagation();
 
