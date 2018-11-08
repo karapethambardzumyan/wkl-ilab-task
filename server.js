@@ -93,14 +93,17 @@ app.get('/api/authorization', (req, res) => {
       return res.status(err.status).send(false);
     }
 
-    return res.send(profile);
+    return res.send({ role: profile.role });
   });
 });
 
 app.post('/api/authorization', (req, res) => {
   for(let i in users) {
     if(users[i].email === req.body.email && users[i].password === req.body.password) {
-      return res.send({ token: encrypt(JSON.stringify(users[i])) });
+      return res.send({
+        token: encrypt(JSON.stringify(users[i])),
+        role: users[i].role
+      });
     }
   }
 

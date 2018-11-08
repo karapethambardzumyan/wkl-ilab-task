@@ -6,12 +6,14 @@
     .service('LoginService', ['$rootScope', '$q', '$http', '$location', '$translate', function($rootScope, $q, $http, $location, $translate) {
       return {
         isAuthorized: null,
+        role: null,
         authorize: function(email, password) {
           const self = this;
 
           $http.post('./api/authorization', 'email=' + email + '&password=' + password, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
             .then(function(result) {
               $rootScope.authorized = self.isAuthorized = true;
+              $rootScope.role = self.role = result.data.role;
               localStorage.setItem('token', result.data.token);
               $location.path('/');
             })
@@ -26,8 +28,10 @@
             const self = this;
             const defer = $q.defer();
 
-            $http.get('./api/authorization', { headers: { token: localStorage.getItem('token') } }).then(function() {
+            $http.get('./api/authorization', { headers: { token: localStorage.getItem('token') } }).then(function(result) {
               $rootScope.authorized = self.isAuthorized = true;
+              $rootScope.role = self.role = result.data.role;
+
               defer.resolve();
 
               if($location.$$path === '/login' || $location.$$path === '/forgot-password') {
@@ -35,6 +39,8 @@
               }
             }).catch(function() {
               $rootScope.authorized = self.isAuthorized = false;
+              $rootScope.role = self.role = null;
+
               defer.reject();
             });
 
@@ -45,8 +51,9 @@
           const self = this;
 
           $http.delete('./api/authorization', { headers: { token: localStorage.getItem('token') } })
-            .then(function(result) {
+            .then(function() {
               $rootScope.authorized = self.isAuthorized = null;
+              $rootScope.role = self.role = null;
               localStorage.removeItem('token');
               $location.path('/login');
             })
