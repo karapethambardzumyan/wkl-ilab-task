@@ -3,7 +3,8 @@
 
   angular
     .module('app')
-    .controller('AccountCtrl', ['$scope', function($scope) {
+    .controller('AccountCtrl', ['$scope', '$rootScope', function($scope, $rootScope) {
+      console.log($rootScope);
       $scope.index = 0;
       $scope.change = function(index) {
         $scope.index = index;
