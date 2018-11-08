@@ -3,9 +3,9 @@
 
   angular
     .module('app')
-    .controller('HeaderCtrl', ['$scope', 'AuthService', '$translate', 'SpinnerService', function($scope, AuthService, $translate, SpinnerService) {
+    .controller('HeaderCtrl', ['$scope', 'LoginService', '$translate', 'SpinnerService', function($scope, LoginService, $translate, SpinnerService) {
       $scope.logout = function() {
-        AuthService.logout();
+        LoginService.logout();
       };
 
       $scope.changeLanguage = function(language) {

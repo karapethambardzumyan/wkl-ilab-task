@@ -3,7 +3,7 @@
 
   angular
     .module('app')
-    .factory('AuthService', ['$rootScope', '$q', '$http', '$location', '$translate', function($rootScope, $q, $http, $location, $translate) {
+    .service('LoginService', ['$rootScope', '$q', '$http', '$location', '$translate', function($rootScope, $q, $http, $location, $translate) {
       return {
         isAuthorized: null,
         authorize: function(email, password) {

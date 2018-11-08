@@ -23,28 +23,28 @@
         url: '/',
         component: 'accountComponent',
         authorization: true,
-        resolve: { authorized: AuthService => AuthService.authorized() }
+        resolve: { authorized: LoginService => LoginService.authorized() }
       };
 
       let loginState = {
         name: 'login',
         url: '/login',
         component: 'loginComponent',
-        resolve: { authorized: AuthService => AuthService.authorized() }
+        resolve: { authorized: LoginService => LoginService.authorized() }
       };
 
       let forgotPasswordState = {
         name: 'forgot-password',
         url: '/forgot-password',
         component: 'forgotPasswordComponent',
-        resolve: { authorized: AuthService => AuthService.authorized() }
+        resolve: { authorized: LoginService => LoginService.authorized() }
       };
 
       let usersState = {
         name: 'users',
         url: '/users',
         component: 'usersComponent',
-        resolve: { authorized: AuthService => AuthService.authorized() }
+        resolve: { authorized: LoginService => LoginService.authorized() }
       };
 
       $locationProvider.html5Mode(true);
@@ -56,14 +56,14 @@
         .state(forgotPasswordState)
         .state(usersState);
     })
-    .run(['$rootScope', '$state', 'AuthService', 'SpinnerService', function($rootScope, $state, AuthService, SpinnerService) {
+    .run(['$rootScope', '$state', 'LoginService', 'SpinnerService', function($rootScope, $state, LoginService, SpinnerService) {
       $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams, options) {
-        if(AuthService.isAuthorized && (toState.name === 'login' || toState.name === 'forgot-password')) {
+        if(LoginService.isAuthorized && (toState.name === 'login' || toState.name === 'forgot-password')) {
           event.preventDefault();
           $state.go('base');
         }
 
-        if(toState.authorization && AuthService.isAuthorized === false) {
+        if(toState.authorization && LoginService.isAuthorized === false) {
           event.preventDefault();
           $state.go('login');
         }

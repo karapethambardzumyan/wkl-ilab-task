@@ -3,8 +3,8 @@
 
   angular
     .module('app')
-    .controller('UserListCtrl', ['$rootScope', '$scope', '$translate', 'SpinnerService', 'UsersService', function($rootScope, $scope, $translate, SpinnerService, UsersService) {
-      $scope.profile = UsersService.profile;
+    .controller('UserListCtrl', ['$rootScope', '$scope', '$translate', 'SpinnerService', 'UserService', function($rootScope, $scope, $translate, SpinnerService, UserService) {
+      $scope.profile = UserService.profile;
 
       $scope.onMouseOver = function($index) {
         $scope.index = $index;
@@ -16,14 +16,14 @@
 
       $scope.onClick = function(id) {
         SpinnerService.start();
-        UsersService.getUser(id).then(result => {
-          UsersService.choosen(result.data);
+        UserService.getUser(id).then(result => {
+          UserService.choosen(result.data);
           SpinnerService.end();
         });
       };
 
       SpinnerService.start();
-      UsersService.getUserList().then(result => {
+      UserService.getUserList().then(result => {
         $scope.userList = result.data;
         SpinnerService.end();
       });

@@ -3,7 +3,7 @@
 
   angular
     .module('app')
-    .factory('UsersService', ['$q', '$http', '$translate', function($q, $http, $translate) {
+    .service('UserService', ['$q', '$http', '$translate', function($q, $http, $translate) {
       return {
         profile: {
           data: null

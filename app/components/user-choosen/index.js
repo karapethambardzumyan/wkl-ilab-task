@@ -3,8 +3,8 @@
 
   angular
     .module('app')
-    .controller('UserChoosenCtrl', ['$rootScope', '$scope', '$translate', 'UsersService', function($rootScope, $scope, $translate, UsersService) {
-      $scope.profile = UsersService.profile;
+    .controller('UserChoosenCtrl', ['$rootScope', '$scope', '$translate', 'UserService', function($rootScope, $scope, $translate, UserService) {
+      $scope.profile = UserService.profile;
     }])
     .component('userChoosenComponent', {
       templateUrl: './components/user-choosen/index.html'

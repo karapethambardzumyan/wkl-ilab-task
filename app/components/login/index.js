@@ -3,10 +3,10 @@
 
   angular
     .module('app')
-    .controller('LoginCtrl', ['$scope', 'AuthService', function($scope, AuthService) {
+    .controller('LoginCtrl', ['$scope', 'LoginService', function($scope, LoginService) {
       $scope.login = () => {
         if($scope.loginForm.$valid) {
-          AuthService.authorize($scope.email, $scope.password);
+          LoginService.authorize($scope.email, $scope.password);
         }
       };
     }])
