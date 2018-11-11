@@ -8,6 +8,12 @@
         profile: {
           data: null
         },
+        updateable: {
+          id: null
+        },
+        selectUpdateableUser: function(id) {
+          this.updateable.id = id;
+        },
         selectUser: function(profile) {
           this.profile.data = profile;
         },
@@ -20,8 +26,17 @@
         createUser: function() {
           // will be implemented
         },
-        updateUser: function(id) {
-          // will be implemented
+        updateUser: function(profile, cb) {
+          const self = this;
+
+          $http.put('./api/users/' + self.updateable.id, profile, { headers: { token: localStorage.getItem('token'), 'Content-Type': 'application/x-www-form-urlencoded' } })
+            .then(function(result) {
+              return cb();
+            })
+            .catch(function(err) {
+              console.log(err);
+              alert($translate.instant('INCORRECT_TOKEN'));
+            });
         },
         deleteUser: function(id) {
           if(this.profile.data.id === id) {

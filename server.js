@@ -204,8 +204,8 @@ app.put('/api/users/:id', (req, res) => {
     }
 
     for(let i in req.body) {
-      if(i in users[profile.id]) {
-        users[profile.id][i] = req.body[i];
+      if(i in users[req.params.id]) {
+        users[req.params.id][i] = req.body[i];
       }
     }
 

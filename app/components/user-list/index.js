@@ -30,7 +30,12 @@
       $scope.update = function($event, id) {
         $event.stopPropagation();
 
-        console.log('update: ' + id);
+        UserService.selectUpdateableUser(id);
+        SpinnerService.start();
+        UserService.getUser(id).then(result => {
+          UserService.selectUser(result.data);
+          SpinnerService.end();
+        });
       };
 
       $scope.onMouseOver = function($index) {
