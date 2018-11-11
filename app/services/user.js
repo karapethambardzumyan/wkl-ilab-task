@@ -5,6 +5,9 @@
     .module('app')
     .service('UserService', ['$q', '$http', '$translate', function($q, $http, $translate) {
       return {
+        users: {
+          list: null
+        },
         profile: {
           data: null
         },
