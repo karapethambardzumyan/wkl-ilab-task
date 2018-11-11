@@ -178,11 +178,39 @@ app.get('/api/users/:id?', (req, res) => {
 });
 
 app.post('/api/users', (req, res) => {
+  validateToken(req.headers.token, (err, profile) => {
+    if(err) {
+      return res.status(err.status).send(false);
+    }
 
+    if(profile.role !== 1 || profile.id === Number(req.params.id)) {
+      return res.status(403).send(false);
+    }
+
+    // create a new user with such fields [email, password] and all the rest fields ny default
+
+    return res.send(true);
+  });
 });
 
 app.put('/api/users/:id', (req, res) => {
+  validateToken(req.headers.token, (err, profile) => {
+    if(err) {
+      return res.status(err.status).send(false);
+    }
 
+    if(profile.role !== 1 || profile.id === Number(req.params.id)) {
+      return res.status(403).send(false);
+    }
+
+    for(let i in req.body) {
+      if(i in users[profile.id]) {
+        users[profile.id][i] = req.body[i];
+      }
+    }
+
+    return res.send(true);
+  });
 });
 
 app.delete('/api/users/:id', (req, res) => {

@@ -27,6 +27,12 @@
         }
       };
 
+      $scope.update = function($event, id) {
+        $event.stopPropagation();
+
+        console.log('update: ' + id);
+      };
+
       $scope.onMouseOver = function($index) {
         $scope.index = $index;
       };
