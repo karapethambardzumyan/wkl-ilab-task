@@ -3,7 +3,8 @@
 
   angular
     .module('app')
-    .controller('UserListCtrl', ['$rootScope', '$scope', '$translate', 'SpinnerService', 'UserService', 'ProfileService', function($rootScope, $scope, $translate, SpinnerService, UserService, ProfileService) {
+    .controller('UserListCtrl', ['$rootScope', '$scope', '$translate', 'SpinnerService', 'UserService', function($rootScope, $scope, $translate, SpinnerService, UserService) {
+      $scope.userList = {};
       $scope.profile = UserService.profile;
 
       $scope.isObjectEmpty = function(object) {
@@ -16,9 +17,9 @@
         const confirmation = confirm('Do you want to delete this user\'s account?');
 
         if(confirmation) {
-          ProfileService.delete(id).then(function() {
+          UserService.deleteUser(id).then(function() {
             SpinnerService.start();
-            UserService.getUserList().then(result => {
+            UserService.getUsers().then(result => {
               $scope.userList = result.data;
               SpinnerService.end();
             });
@@ -37,13 +38,13 @@
       $scope.onClick = function(id) {
         SpinnerService.start();
         UserService.getUser(id).then(result => {
-          UserService.choosen(result.data);
+          UserService.selectUser(result.data);
           SpinnerService.end();
         });
       };
 
       SpinnerService.start();
-      UserService.getUserList().then(result => {
+      UserService.getUsers().then(result => {
         $scope.userList = result.data;
         SpinnerService.end();
       });

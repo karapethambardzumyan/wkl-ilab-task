@@ -8,14 +8,23 @@
         profile: {
           data: null
         },
-        getUserList: function() {
-          return $http.get('./api/user-list', { headers: { token: localStorage.getItem('token') } });
+        selectUser: function(profile) {
+          this.profile.data = profile;
+        },
+        getUsers: function() {
+          return $http.get('./api/users', { headers: { token: localStorage.getItem('token') } });
         },
         getUser: function(id) {
-          return $http.get('./api/user-list/' + id, { headers: { token: localStorage.getItem('token') } });
+          return $http.get('./api/users/' + id, { headers: { token: localStorage.getItem('token') } });
         },
-        choosen: function(profile) {
-          this.profile.data = profile;
+        createUser: function() {
+          // will be implemented
+        },
+        updateUser: function(id) {
+          // will be implemented
+        },
+        deleteUser: function(id) {
+          return $http.delete('./api/users/' + id, { headers: { token: localStorage.getItem('token') } });
         }
       };
     }]);

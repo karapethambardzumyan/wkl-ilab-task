@@ -20,10 +20,7 @@
         },
         post: function() {
           return $http.post('./api/profile', { headers: { token: localStorage.getItem('token') } });
-        },
-        delete: function(id) {
-          return $http.delete('./api/profile/' + id, { headers: { token: localStorage.getItem('token') } });
-        },
+        }
       };
     }]);
 })();

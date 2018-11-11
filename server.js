@@ -87,6 +87,7 @@ app.use('/components', express.static(path.join(__dirname, 'app/components')));
 app.use('/css', express.static(path.join(__dirname, 'app/assets/css')));
 app.use('/img', express.static(path.join(__dirname, 'app/assets/img')));
 
+// CRUD for authroziation
 app.get('/api/authorization', (req, res) => {
   validateToken(req.headers.token, (err, profile) => {
     if(err) {
@@ -120,6 +121,7 @@ app.delete('/api/authorization', (req, res) => {
   });
 });
 
+// CRUD for profile
 app.get('/api/profile', (req, res) => {
   setTimeout(function() {
     validateToken(req.headers.token, (err, profile) => {
@@ -148,7 +150,42 @@ app.put('/api/profile', (req, res) => {
   });
 });
 
-app.delete('/api/profile/:id', (req, res) => {
+// CRUD for users
+app.get('/api/users/:id?', (req, res) => {
+  validateToken(req.headers.token, (err, profile) => {
+    if(err) {
+      return res.status(err.status).send(false);
+    }
+
+    if(req.params.id === undefined) {
+      const newUsers = {};
+
+      for(let i in users) {
+        if(users[i].id !== profile.id) {
+          newUsers[i] = users[i];
+        }
+      }
+
+      return res.send(newUsers);
+    }
+
+    if(!(req.params.id in users)) {
+      return res.status(400).send(false);
+    }
+
+    return res.send(users[req.params.id]);
+  });
+});
+
+app.post('/api/users', (req, res) => {
+
+});
+
+app.put('/api/users/:id', (req, res) => {
+
+});
+
+app.delete('/api/users/:id', (req, res) => {
   validateToken(req.headers.token, (err, profile) => {
     if(err) {
       return res.status(err.status).send(false);
@@ -162,36 +199,6 @@ app.delete('/api/profile/:id', (req, res) => {
 
     return res.send(true);
   });
-});
-
-app.get('/api/user-list', (req, res) => {
-  validateToken(req.headers.token, (err, profile) => {
-    if(err) {
-      return res.status(err.status).send(false);
-    }
-
-    const newUsers = {};
-
-    for(let i in users) {
-      if(users[i].id !== profile.id) {
-        newUsers[i] = users[i];
-      }
-    }
-
-    return res.send(newUsers);
-  });
-});
-
-app.get('/api/user-list/:id', (req, res) => {
-  setTimeout(() => {
-    validateToken(req.headers.token, (err, profile) => {
-      if(err) {
-        return res.status(err.status).send(false);
-      }
-
-      return res.send(users[req.params.id]);
-    });
-  }, 1000);
 });
 
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'app/index.html')));
