@@ -1,12 +1,12 @@
 <div class="card" ng-controller="UserChoosenCtrl">
   <div class="card-body">
-    <p>{{ 'ID' | translate }}: <strong>{{ profile.data.id }}</strong></p>
-    <p>{{ 'ROLE' | translate }}: <strong>{{ profile.data.role }}</strong></p>
-    <p>{{ 'EMAIL' | translate }}: <strong>{{ profile.data.email }}</strong></p>
-    <p>{{ 'USERNAME' | translate }}: <strong>{{ profile.data.name }}</strong></p>
-    <p>{{ 'AGE' | translate }}: <strong>{{ profile.data.age }}</strong></p>
-    <p>{{ 'BIRTHDAY' | translate }}: <strong>{{ profile.data.birthday }}</strong></p>
-    <p>{{ 'LOGIN' | translate }}: <strong>{{ profile.data.login }}</strong></p>
-    <p>{{ 'NOTIFICATION' | translate }}: <strong>{{ profile.data.notification }}</strong></p>
+    <p>{{ 'ID' | translate }}: <strong>{{ profile.data.id || 'is not choosen' }}</strong></p>
+    <p>{{ 'ROLE' | translate }}: <strong>{{ profile.data.role || 'is not choosen' }}</strong></p>
+    <p>{{ 'EMAIL' | translate }}: <strong>{{ profile.data.email || 'is not choosen' }}</strong></p>
+    <p>{{ 'USERNAME' | translate }}: <strong>{{ profile.data.name || 'is not choosen' }}</strong></p>
+    <p>{{ 'AGE' | translate }}: <strong>{{ profile.data.age || 'is not choosen' }}</strong></p>
+    <p>{{ 'BIRTHDAY' | translate }}: <strong>{{ profile.data.birthday || 'is not choosen' }}</strong></p>
+    <p>{{ 'LOGIN' | translate }}: <strong>{{ profile.data.login || 'is not choosen' }}</strong></p>
+    <p>{{ 'NOTIFICATION' | translate }}: <strong>{{ profile.data.notification || 'is not choosen' }}</strong></p>
   </div>
 </div>
