@@ -24,6 +24,10 @@
           // will be implemented
         },
         deleteUser: function(id) {
+          if(this.profile.data.id === id) {
+            this.profile.data = null;
+          }
+
           return $http.delete('./api/users/' + id, { headers: { token: localStorage.getItem('token') } });
         }
       };
