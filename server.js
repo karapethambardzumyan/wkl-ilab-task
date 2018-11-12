@@ -187,7 +187,20 @@ app.post('/api/users', (req, res) => {
       return res.status(403).send(false);
     }
 
-    // create a new user with such fields [email, password] and all the rest fields ny default
+    const ids = Object.keys(users).map(val => Number(val));
+    const id = Math.max.apply(Math, ids) + 1;
+
+    users[id] = {
+      id: id,
+      role: 'Ordinary',
+      name: "Default User",
+      age: "21",
+      birthday: "1997/07/18",
+      login: "08 September 2018",
+      notification: "07-Sep-18",
+      email: req.body.email,
+      password: req.body.password
+    };
 
     return res.send(true);
   });
