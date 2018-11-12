@@ -1,12 +1,12 @@
 <div class="card" ng-controller="UserChoosenCtrl">
   <div class="card-body">
-    <p>{{ 'ID' | translate }}: <strong>{{ user.selected.id || 'is not choosen' }}</strong></p>
-    <p>{{ 'ROLE' | translate }}: <strong>{{ user.selected.role || 'is not choosen' }}</strong></p>
-    <p>{{ 'EMAIL' | translate }}: <strong>{{ user.selected.email || 'is not choosen' }}</strong></p>
-    <p>{{ 'USERNAME' | translate }}: <strong>{{ user.selected.name || 'is not choosen' }}</strong></p>
-    <p>{{ 'AGE' | translate }}: <strong>{{ user.selected.age || 'is not choosen' }}</strong></p>
-    <p>{{ 'BIRTHDAY' | translate }}: <strong>{{ user.selected.birthday || 'is not choosen' }}</strong></p>
-    <p>{{ 'LOGIN' | translate }}: <strong>{{ user.selected.login || 'is not choosen' }}</strong></p>
-    <p>{{ 'NOTIFICATION' | translate }}: <strong>{{ user.selected.notification || 'is not choosen' }}</strong></p>
+    <p>{{ 'ID' | translate }}: <strong>{{ user.list[user.selectedId].id || 'is not choosen' }}</strong></p>
+    <p>{{ 'ROLE' | translate }}: <strong>{{ user.list[user.selectedId].role || 'is not choosen' }}</strong></p>
+    <p>{{ 'EMAIL' | translate }}: <strong>{{ user.list[user.selectedId].email || 'is not choosen' }}</strong></p>
+    <p>{{ 'USERNAME' | translate }}: <strong>{{ user.list[user.selectedId].name || 'is not choosen' }}</strong></p>
+    <p>{{ 'AGE' | translate }}: <strong>{{ user.list[user.selectedId].age || 'is not choosen' }}</strong></p>
+    <p>{{ 'BIRTHDAY' | translate }}: <strong>{{ user.list[user.selectedId].birthday || 'is not choosen' }}</strong></p>
+    <p>{{ 'LOGIN' | translate }}: <strong>{{ user.list[user.selectedId].login || 'is not choosen' }}</strong></p>
+    <p>{{ 'NOTIFICATION' | translate }}: <strong>{{ user.list[user.selectedId].notification || 'is not choosen' }}</strong></p>
   </div>
 </div>

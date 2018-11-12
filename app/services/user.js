@@ -6,22 +6,13 @@
     .service('UserService', ['$q', '$http', '$translate', function($q, $http, $translate) {
       return {
         user: {
-          selected: null,
-          edited: null,
+          selectedId: null,
+          editedId: null,
           list: null
         },
-
-
-
-        selectUpdateableUser: function(id) {
-          this.user.edited = id === null ? null : { id: id };
-        },
         selectUser: function(id) {
-          this.user.selected = this.user.list[id];
+          this.user.selectedId = id;
         },
-
-
-
         getUsers: function() {
           const self = this;
 
@@ -29,20 +20,14 @@
             self.user.list = result.data;
           });
         },
-        getUser: function(id) {
-          const self = this;
-
-          return $http.get('./api/users/' + id, { headers: { token: localStorage.getItem('token') } }).then(function(result) {
-            self.user.selected = result.data;
-          });
-        },
         deleteUser: function(id) {
-          if(this.user.selected !== null && this.user.selected.id === id) {
-            this.user.selected = null;
+          if(this.user.selectedId !== null && this.user.list[this.user.selectedId].id === id) {
+            this.user.selectedId = null;
           }
 
           return $http.delete('./api/users/' + id, { headers: { token: localStorage.getItem('token') } });
         },
+
         updateUser: function(profile, cb) {
           const self = this;
 
@@ -54,17 +39,7 @@
               console.log(err);
               alert($translate.instant('INCORRECT_TOKEN'));
             });
-        },
-
-
-
-
-
-        createUser: function() {
-          // will be implemented
-        },
-
-
+        }
       };
     }]);
 })();

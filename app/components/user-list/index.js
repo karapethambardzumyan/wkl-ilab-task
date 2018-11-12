@@ -39,7 +39,6 @@
       };
 
       $scope.onClick = function(id) {
-        // UserService.getUser(id);
         UserService.selectUser(id);
       };
 
