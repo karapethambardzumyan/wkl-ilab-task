@@ -30,7 +30,6 @@
 
           return $http.delete('./api/users/' + id, { headers: { token: localStorage.getItem('token') } });
         },
-
         updateUser: function(profile, cb) {
           const self = this;
 
@@ -39,7 +38,17 @@
               return cb();
             })
             .catch(function(err) {
-              console.log(err);
+              alert($translate.instant('INCORRECT_TOKEN'));
+            });
+        },
+        createUser: function(profile, cb) {
+          const self = this;
+
+          $http.post('./api/users', profile, { headers: { token: localStorage.getItem('token'), 'Content-Type': 'application/x-www-form-urlencoded' } })
+            .then(function(result) {
+              return cb();
+            })
+            .catch(function(err) {
               alert($translate.instant('INCORRECT_TOKEN'));
             });
         }

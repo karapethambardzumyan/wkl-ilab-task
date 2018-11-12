@@ -5,6 +5,7 @@
     .module('app')
     .controller('UserUpdateCtrl', ['$scope', 'SpinnerService', 'UserService', function($scope, SpinnerService, UserService) {
       $scope.user = UserService.user;
+      $scope.email = $scope.user.list[$scope.user.editedId].email;
       $scope.username = $scope.user.list[$scope.user.editedId].name;
       $scope.age = $scope.user.list[$scope.user.editedId].age;
       $scope.birthday = $scope.user.list[$scope.user.editedId].birthday;
@@ -17,7 +18,7 @@
 
       $scope.update = () => {
         if($scope.profileForm.$valid) {
-          UserService.updateUser(`name=${ $scope.profileForm.username.$viewValue }&age=${ $scope.profileForm.age.$viewValue }&birthday=${ $scope.profileForm.birthday.$viewValue }&login=${ $scope.profileForm.login.$viewValue }&notification=${ $scope.profileForm.notification.$viewValue }`, function() {
+          UserService.updateUser(`email=${ $scope.profileForm.email.$viewValue }&name=${ $scope.profileForm.username.$viewValue }&age=${ $scope.profileForm.age.$viewValue }&birthday=${ $scope.profileForm.birthday.$viewValue }&login=${ $scope.profileForm.login.$viewValue }&notification=${ $scope.profileForm.notification.$viewValue }`, function() {
             UserService.selectEditedUser(null);
             UserService.getUsers();
           });
