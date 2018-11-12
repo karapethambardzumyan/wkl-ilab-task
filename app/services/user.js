@@ -13,6 +13,9 @@
         selectUser: function(id) {
           this.user.selectedId = id;
         },
+        selectEditedUser: function(id) {
+          this.user.editedId = id;
+        },
         getUsers: function() {
           const self = this;
 
@@ -31,7 +34,7 @@
         updateUser: function(profile, cb) {
           const self = this;
 
-          $http.put('./api/users/' + self.user.edited.id, profile, { headers: { token: localStorage.getItem('token'), 'Content-Type': 'application/x-www-form-urlencoded' } })
+          $http.put('./api/users/' + self.user.editedId, profile, { headers: { token: localStorage.getItem('token'), 'Content-Type': 'application/x-www-form-urlencoded' } })
             .then(function(result) {
               return cb();
             })

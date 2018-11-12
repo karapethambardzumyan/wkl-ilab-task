@@ -7,7 +7,7 @@
       <li class="nav-item">
         <a href="#" ng-class="index === 1 ? 'nav-link active' : 'nav-link'" ng-click="change(1)">{{ 'SETTINGS' | translate }}</a>
       </li>
-      <li class="nav-item" ng-if="$root.role === 1">
+      <li class="nav-item" ng-if="$root.role === 'Admin'">
         <a href="#" ng-class="index === 2 ? 'nav-link active' : 'nav-link'" ng-click="change(2)">{{ 'ADMIN' | translate }}</a>
       </li>
     </ul>
@@ -18,7 +18,7 @@
       <div class="tab-pane fade show active profile-tab" id="settings" role="tabpanel" aria-labelledby="settings-tab">
         <settings-component ng-if="index === 1"></settings-component>
       </div>
-      <div class="tab-pane fade show active profile-tab" id="settings" role="tabpanel" aria-labelledby="settings-tab" ng-if="$root.role === 1">
+      <div class="tab-pane fade show active profile-tab" id="settings" role="tabpanel" aria-labelledby="settings-tab" ng-if="$root.role === 'Admin'">
         <users-component ng-if="index === 2"></users-component>
       </div>
     </div>

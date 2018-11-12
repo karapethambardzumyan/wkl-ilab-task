@@ -26,19 +26,11 @@
       $scope.update = function($event, id) {
         $event.stopPropagation();
 
-        UserService.selectUpdateableUser(id);
-        // UserService.getUser(id);
+        UserService.selectEditedUser(id);
       };
 
-      $scope.onMouseOver = function($index) {
-        $scope.index = $index;
-      };
 
-      $scope.onMouseOut = function($index) {
-        $scope.index = undefined;
-      };
-
-      $scope.onClick = function(id) {
+      $scope.select = function(id) {
         UserService.selectUser(id);
       };
 

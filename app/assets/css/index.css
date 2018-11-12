@@ -70,7 +70,7 @@
   margin-bottom: 15px;
 }
 
-.hover {
+.user-list ul li:hover, .user-list ul li.selected {
   background: #4a91fb1c;
   cursor: pointer;
 }

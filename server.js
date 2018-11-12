@@ -8,7 +8,7 @@ const port = 3000;
 const users = {
   1: {
     id: 1,
-    role: 1,
+    role: 'Admin',
     name: "Karapet Hambardzumyan",
     age: "21",
     birthday: "1997/07/18",
@@ -19,7 +19,7 @@ const users = {
   },
   2: {
     id: 2,
-    role: 0,
+    role: 'Ordinary',
     name: "Karapet Hambardzumyan",
     age: "21",
     birthday: "1997/07/18",
@@ -30,7 +30,7 @@ const users = {
   },
   3: {
     id: 3,
-    role: 0,
+    role: 'Ordinary',
     name: "Karapet Hambardzumyan",
     age: "21",
     birthday: "1997/07/18",
@@ -183,7 +183,7 @@ app.post('/api/users', (req, res) => {
       return res.status(err.status).send(false);
     }
 
-    if(profile.role !== 1 || profile.id === Number(req.params.id)) {
+    if(profile.role !== 'Admin' || profile.id === Number(req.params.id)) {
       return res.status(403).send(false);
     }
 
@@ -199,7 +199,7 @@ app.put('/api/users/:id', (req, res) => {
       return res.status(err.status).send(false);
     }
 
-    if(profile.role !== 1 || profile.id === Number(req.params.id)) {
+    if(profile.role !== 'Admin' || profile.id === Number(req.params.id)) {
       return res.status(403).send(false);
     }
 
@@ -219,7 +219,7 @@ app.delete('/api/users/:id', (req, res) => {
       return res.status(err.status).send(false);
     }
 
-    if(profile.role !== 1 || profile.id === Number(req.params.id)) {
+    if(profile.role !== 'Admin' || profile.id === Number(req.params.id)) {
       return res.status(403).send(false);
     }
 

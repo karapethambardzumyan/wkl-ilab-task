@@ -1,7 +1,7 @@
 <div class="card" ng-controller="UserChoosenCtrl">
   <div class="card-body">
     <p>{{ 'ID' | translate }}: <strong>{{ user.list[user.selectedId].id || 'is not choosen' }}</strong></p>
-    <p>{{ 'ROLE' | translate }}: <strong>{{ user.list[user.selectedId].role || 'is not choosen' }}</strong></p>
+    <p class="capitalize">{{ 'ROLE' | translate }}: <strong>{{ user.list[user.selectedId].role || 'is not choosen' }}</strong></p>
     <p>{{ 'EMAIL' | translate }}: <strong>{{ user.list[user.selectedId].email || 'is not choosen' }}</strong></p>
     <p>{{ 'USERNAME' | translate }}: <strong>{{ user.list[user.selectedId].name || 'is not choosen' }}</strong></p>
     <p>{{ 'AGE' | translate }}: <strong>{{ user.list[user.selectedId].age || 'is not choosen' }}</strong></p>
