@@ -4,11 +4,11 @@
   angular
     .module('app')
     .controller('UserListCtrl', ['$rootScope', '$scope', '$translate', 'SpinnerService', 'UserService', function($rootScope, $scope, $translate, SpinnerService, UserService) {
-      $scope.userList = {};
+      $scope.user = UserService.user;
       $scope.profile = UserService.profile;
 
       $scope.isObjectEmpty = function(object) {
-        return Object.keys(object).length === 0;
+        return object === null ? false : Object.keys(object).length === 0;
       };
 
       $scope.delete = function($event, id) {
@@ -18,11 +18,7 @@
 
         if(confirmation) {
           UserService.deleteUser(id).then(function() {
-            SpinnerService.start();
-            UserService.getUsers().then(result => {
-              $scope.userList = result.data;
-              SpinnerService.end();
-            });
+            UserService.getUsers();
           });
         }
       };
@@ -31,11 +27,7 @@
         $event.stopPropagation();
 
         UserService.selectUpdateableUser(id);
-        SpinnerService.start();
-        UserService.getUser(id).then(result => {
-          UserService.selectUser(result.data);
-          SpinnerService.end();
-        });
+        // UserService.getUser(id);
       };
 
       $scope.onMouseOver = function($index) {
@@ -47,18 +39,11 @@
       };
 
       $scope.onClick = function(id) {
-        SpinnerService.start();
-        UserService.getUser(id).then(result => {
-          UserService.selectUser(result.data);
-          SpinnerService.end();
-        });
+        // UserService.getUser(id);
+        UserService.selectUser(id);
       };
 
-      SpinnerService.start();
-      UserService.getUsers().then(result => {
-        $scope.userList = result.data;
-        SpinnerService.end();
-      });
+      UserService.getUsers()
     }])
     .component('userListComponent', {
       templateUrl: './components/user-list/index.html'
