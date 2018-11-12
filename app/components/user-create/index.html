@@ -1,0 +1,43 @@
+<div class="modal show" role="dialog" ng-controller="UserCreateCtrl">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create a new user</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name="profileForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST" ng-submit="update()">
+          <div class="form-group">
+            <label for="email">{{ 'EMAIL' | translate }}</label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="{{ 'ENTER_EMAIL' | translate }}"
+              ng-model="email"
+              ng-class="['form-control', !(profileForm.email.$touched && profileForm.email.$invalid) || 'is-invalid']"
+              email
+            />
+            <p ng-show="$root.checkingSuccess && profileForm.$error.unique[0].$error.unique" class="error custom-error">{{ 'USERNAME_EXISTS' | translate }}</p>
+            <p ng-show="!profileForm.$error.unique[0].$error.unique && profileForm.email.$touched && profileForm.email.$invalid" class="error">{{ 'INCORRECT_EMAIL' | translate }}</p>
+          </div>
+          <div class="form-group">
+            <label for="password">{{ 'PASSWORD' | translate }}</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="{{ 'ENTER_PASSWORD' | translate }}"
+              ng-model="password"
+              ng-class="['form-control', !(profileForm.password.$touched && profileForm.password.$invalid) || 'is-invalid']"
+              password
+            />
+            <p ng-show="profileForm.password.$touched && profileForm.password.$invalid" class="error">{{ 'INCORRECT_PASSWORD' | translate }}</p>
+          </div>
+          <button type="submit" class="btn btn-primary" ng-disabled="!profileForm.$valid" ng-click="createUser()">{{ 'CREATE' | translate }}</button>
+        </form>
+      </div>
+  </div>
+</div>

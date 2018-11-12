@@ -8,7 +8,11 @@
         user: {
           selectedId: null,
           editedId: null,
-          list: null
+          list: null,
+          createState: false
+        },
+        toggleCreateUser: function() {
+          this.user.createState = !this.user.createState;
         },
         selectUser: function(id) {
           this.user.selectedId = id;

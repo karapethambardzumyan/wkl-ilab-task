@@ -3,10 +3,13 @@
     <div class="col-md-12">
       <h2>Users list</h2>
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
           <div class="search">
             <input class="form-control" type="text" placeholder="Search" aria-label="Search">
           </div>
+        </div>
+        <div class="col-md-4">
+          <button type="button" class="btn btn-outline-primary full-width" ng-click="createUser()">Create a new user</button>
         </div>
       </div>
       <div class="row">
@@ -21,4 +24,5 @@
   </div>
 
   <user-update-component ng-if="user.editedId !== null"></user-update-component>
+  <user-create-component ng-if="user.createState"></user-create-component>
 </div>

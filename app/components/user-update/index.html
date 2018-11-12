@@ -20,7 +20,6 @@
               ng-class="['form-control', !(profileForm.email.$touched && profileForm.email.$invalid) || 'is-invalid']"
               email
             />
-            <checking-spinner-component></checking-spinner-component>
             <p ng-show="$root.checkingSuccess && profileForm.$error.unique[0].$error.unique" class="error custom-error">{{ 'USERNAME_EXISTS' | translate }}</p>
             <p ng-show="!profileForm.$error.unique[0].$error.unique && profileForm.email.$touched && profileForm.email.$invalid" class="error">{{ 'INCORRECT_EMAIL' | translate }}</p>
           </div>
