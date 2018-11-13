@@ -3,7 +3,9 @@
 
   angular
     .module('app', ['ui.router', 'ui.router.state.events', 'pascalprecht.translate'])
-    .config(function($stateProvider, $locationProvider, $urlRouterProvider, $translateProvider) {
+    .config(function($stateProvider, $locationProvider, $urlRouterProvider, $translateProvider, $httpProvider) {
+      $httpProvider.interceptors.push('LoggingInterceptor');
+
       $translateProvider.useStaticFilesLoader({
         files: [
           {
