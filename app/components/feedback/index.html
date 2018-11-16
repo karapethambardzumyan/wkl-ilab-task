@@ -1,0 +1,47 @@
+<div ng-controller="FeedbackCtrl">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Feedback</h2>
+      <form name="feedbackForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST" ng-submit="send()">
+        <div class="form-group">
+          <label for="username">{{ 'USERNAME' | translate }}</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="{{ 'ENTER_USERNAME' | translate }}"
+            ng-model="username"
+            ng-class="['form-control', !(feedbackForm.username.$touched && feedbackForm.username.$invalid) || 'is-invalid']"
+            username
+            unique
+          />
+          <p ng-show="!feedbackForm.$error.unique[0].$error.unique && feedbackForm.username.$touched && feedbackForm.username.$invalid" class="error">{{ 'INCORRECT_USERNAME' | translate }}</p>
+        </div>
+        <div class="form-group">
+          <label for="email">{{ 'EMAIL' | translate }}</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="{{ 'ENTER_EMAIL' | translate }}"
+            ng-model="email"
+            ng-class="['form-control', !(feedbackForm.email.$touched && feedbackForm.email.$invalid) || 'is-invalid']"
+            email
+          />
+          <p ng-show="feedbackForm.email.$touched && feedbackForm.email.$invalid" class="error">{{ 'INCORRECT_EMAIL' | translate }}</p>
+        </div>
+        <div class="form-group">
+          <label for="message">{{ 'MESSAGE' | translate }}</label>
+          <textarea
+            name="message"
+            id="message"
+            placeholder="{{ 'ENTER_MESSAGE' | translate }}"
+            ng-model="message"
+            ng-class="['form-control', !(feedbackForm.message.$touched && feedbackForm.message.$invalid) || 'is-invalid']"
+          ></textarea>
+          <p ng-show="feedbackForm.message.$touched && feedbackForm.message.$invalid" class="error">{{ 'INCORRECT_MESSAGE' | translate }}</p>
+        </div>
+        <button type="submit" class="btn btn-primary" ng-disabled="!feedbackForm.$valid">Send</button>
+      </form>
+  </div>
+</div>

@@ -10,6 +10,9 @@
       <li class="nav-item" ng-if="$root.role === 'Admin'">
         <a href="#" ng-class="index === 2 ? 'nav-link active' : 'nav-link'" ng-click="change(2)">{{ 'ADMIN' | translate }}</a>
       </li>
+      <li class="nav-item" ng-if="$root.role === 'Ordinary'">
+        <a href="#" ng-class="index === 2 ? 'nav-link active' : 'nav-link'" ng-click="change(2)">{{ 'FEEDBACK' | translate }}</a>
+      </li>
     </ul>
     <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active profile-tab" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -20,6 +23,9 @@
       </div>
       <div class="tab-pane fade show active profile-tab" id="settings" role="tabpanel" aria-labelledby="settings-tab" ng-if="$root.role === 'Admin'">
         <users-component ng-if="index === 2"></users-component>
+      </div>
+      <div class="tab-pane fade show active profile-tab" id="settings" role="tabpanel" aria-labelledby="settings-tab" ng-if="$root.role === 'Ordinary'">
+        <feedback-component ng-if="index === 2"></feedback-component>
       </div>
     </div>
   </div>
