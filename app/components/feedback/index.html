@@ -1,7 +1,7 @@
 <div ng-controller="FeedbackCtrl">
   <div class="row">
     <div class="col-md-12">
-      <h2>Feedback</h2>
+      <h2>{{ 'FEEDBACK' | translate }}</h2>
       <form name="feedbackForm" class="form" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST" ng-submit="send()">
         <div class="form-group">
           <label for="username">{{ 'USERNAME' | translate }}</label>
@@ -42,7 +42,7 @@
           ></textarea>
           <p ng-show="feedbackForm.message.$touched && feedbackForm.message.$invalid" class="error">{{ 'INCORRECT_MESSAGE' | translate }}</p>
         </div>
-        <button type="submit" class="btn btn-primary" ng-disabled="!feedbackForm.$valid">Send</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="!feedbackForm.$valid">{{ 'SEND' | translate }}</button>
       </form>
   </div>
   <div class="row">
@@ -51,15 +51,15 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Feedback information</h5>
+              <h5 class="modal-title">{{ 'FEEDBACK_INFORMATION' | translate }}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="close()">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <p>Name: <strong>{{ username }}</strong></p>
-              <p>Email: <strong>{{ email }}</strong></p>
-              <p>Message: <strong>{{ message }}</strong></p>
+              <p>{{ 'USERNAME' | translate }}: <strong>{{ username }}</strong></p>
+              <p>{{ 'EMAIL' | translate }}: <strong>{{ email }}</strong></p>
+              <p>{{ 'MESSAGE' | translate }}: <strong>{{ message }}</strong></p>
             </div>
         </div>
       </div>

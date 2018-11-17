@@ -1,10 +1,10 @@
 <div class="row user-list" ng-controller="UserListCtrl">
   <div class="col-md-12">
-    <p ng-if="isObjectEmpty(user.list)">There is no any user!</p>
+    <p ng-if="isObjectEmpty(user.list)">{{ 'NO_USER' | translate }}</p>
     <ul class="list-group"">
       <li ng-class="['list-group-item', user.list[user.selectedId].id !== val.id || 'selected']" ng-repeat="(key, val) in user.list" ng-click="select(val.id)">
         <p>{{ 'ID' | translate }}: <strong>{{ val.id }}</strong></p>
-        <p>{{ 'Role' | translate }}: <strong>{{ val.role }}</strong></p>
+        <p>{{ 'ROLE' | translate }}: <strong>{{ val.role === 'Ordinary' ? ('ORDINARY' | translate) : ('ADMINISTRATOR' | translate) }}</strong></p>
         <p>{{ 'EMAIL' | translate }}: <strong>{{ val.email }}</strong></p>
         <p>{{ 'USERNAME' | translate }}: <strong>{{ val.name }}</strong></p>
         <p>{{ 'AGE' | translate }}: <strong>{{ val.age }}</strong></p>
@@ -12,8 +12,8 @@
         <p>{{ 'LOGIN' | translate }}: <strong>{{ val.login }}</strong></p>
         <p>{{ 'NOTIFICATION' | translate }}: <strong>{{ val.notification }}</strong></p>
         <div class="btn-group user-actions" role="group">
-          <button type="button" class="btn btn-outline-warning" ng-click="update($event, val.id)">Edit</button>
-          <button type="button" class="btn btn-outline-danger" ng-click="delete($event, val.id)">Delete</button>
+          <button type="button" class="btn btn-outline-warning" ng-click="update($event, val.id)">{{ 'EDIT' | translate }}</button>
+          <button type="button" class="btn btn-outline-danger" ng-click="delete($event, val.id)">{{ 'DELETE' | translate }}</button>
         </div>
       </li>
     </ul>

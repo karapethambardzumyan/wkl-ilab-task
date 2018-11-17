@@ -14,7 +14,7 @@
       $scope.delete = function($event, id) {
         $event.stopPropagation();
 
-        const confirmation = confirm('Do you want to delete this user\'s account?');
+        const confirmation = confirm($translate.instant('DELETE_CONFIRMATION'));
 
         if(confirmation) {
           UserService.deleteUser(id).then(function() {
