@@ -41,7 +41,7 @@
   "INCORRECT_LOGIN": "Дата входа должна быть в таком формате: 08 September 2018",
   "INCORRECT_NOTIFICATION": "Дата уведомления должна быть в таком формате: 07-Sep-18",
   "INCORRECT_EMAIL_OR_PASSWORD": "Неправильный логин или пароль",
-  "INCORRECT_MESSAGE": "Неправильное сообщение",
+  "INCORRECT_MESSAGE": "Сообщение обязательно",
   "INCORRECT_TOKEN": "Неправильный токен",
   "USERS": "Пользователи"
 }

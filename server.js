@@ -2,6 +2,7 @@ const path = require('path');
 const crypto = require('crypto');
 const express = require('express');
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
 const app = express();
 const port = 3000;
 
@@ -40,7 +41,6 @@ const users = {
     password: "qwerty"
   }
 };
-
 const algorithm = 'aes-256-ctr';
 const password = 'only_server_know_it';
 
@@ -239,6 +239,43 @@ app.delete('/api/users/:id', (req, res) => {
     delete users[req.params.id];
 
     return res.send(true);
+  });
+});
+
+app.post('/api/feedback', (req, res) => {
+  validateToken(req.headers.token, (err, profile) => {
+    if(err) {
+      return res.status(err.status).send(false);
+    }
+
+    nodemailer.createTestAccount((err, account) => {
+      let transporter = nodemailer.createTransport({
+        host: 'smtp.ethereal.email',
+        port: 587,
+        secure: false,
+        auth: {
+          user: account.user,
+          pass: account.pass
+        }
+      });
+
+      let mailOptions = {
+        from: `${ req.body.name } ${ req.body.email }`,
+        to: 'support@wkl-ilab-task.com',
+        subject: 'Feedback message from WKL-ILAB-TASK',
+        text: req.body.content
+      };
+
+      transporter.sendMail(mailOptions, (err, info) => {
+        if(err) {
+          return console.log(err);
+        }
+
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+        return res.send(true);
+      });
+    });
   });
 });
 
